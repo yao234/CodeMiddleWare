@@ -24,7 +24,14 @@ namespace NeuSoftMedicare.SQLServer.Hospital
         private static string result;
 
         //public string insuplc_admdvs;
-        private static readonly string insuplc_admdvs = "320124";
+        //private static readonly string insuplc_admdvs = "320124";
+
+        private string insuplc_admdvs;
+
+        public void Setinsuplc_admdvs(string insuplc_admdvs) {
+            this.insuplc_admdvs = insuplc_admdvs;
+        }
+
         public CommonClassHospital()
         {
             //this.insuplc_admdvs = "320124";
@@ -189,59 +196,59 @@ namespace NeuSoftMedicare.SQLServer.Hospital
         [NewFunctionCode("2601")]
         private int NewHospitalChongZheng(NewYiBaoChongZheng chongZheng)
         {
-            return AccessFunction<NewYiBaoChongZheng>("2601", insuplc_admdvs, chongZheng);
+            return AccessFunction<NewYiBaoChongZheng>("2601", this.insuplc_admdvs, chongZheng);
         }
 
         [NewFunctionCode("2401")]
         private int InHospital(InHospitalRegist regist)
         {
-            return AccessFunction<InHospitalRegist>("2401", insuplc_admdvs, regist);
+            return AccessFunction<InHospitalRegist>("2401", this.insuplc_admdvs, regist);
         }
         [NewFunctionCode("2404")]
         private int InHospitalReturn(InHospitalReturn hospitalReturn)
         {
-            return AccessFunction<InHospitalReturn>("2404", insuplc_admdvs, hospitalReturn);
+            return AccessFunction<InHospitalReturn>("2404", this.insuplc_admdvs, hospitalReturn);
         }
         [NewFunctionCode("2403")]
         private int ModifyHospitalRegiser(AlterInHospitalInfomation alterInHospital)
         {
-            return AccessFunction<AlterInHospitalInfomation>("2403", insuplc_admdvs, alterInHospital);
+            return AccessFunction<AlterInHospitalInfomation>("2403", this.insuplc_admdvs, alterInHospital);
         }
         [NewFunctionCode("2301")]
         private int UploadInfomation(InHospitalChargeUpLoad chargeUpLoad)
         {
-            string input = json.ZhuyuanfeiyongmingxishangchuanJson("2301", insuplc_admdvs, new List<InHospitalChargeUpLoad>() { chargeUpLoad });
+            string input = json.ZhuyuanfeiyongmingxishangchuanJson("2301", this.insuplc_admdvs, new List<InHospitalChargeUpLoad>() { chargeUpLoad });
             return AccessFunction("2301", input);
         }
         [NewFunctionCode("2302")]
         private int UploadBack(InHospitalChargeReturn inHospitalChargeReturn)
         {
-            return AccessFunction<InHospitalChargeReturn>("2302", insuplc_admdvs, inHospitalChargeReturn);
+            return AccessFunction<InHospitalChargeReturn>("2302", this.insuplc_admdvs, inHospitalChargeReturn);
         }
         [NewFunctionCode("2303")]
         private int YuSettleMent(InHospitalYuSettleMent settleMent)
         {
-            return AccessFunction<InHospitalYuSettleMent>("2303", insuplc_admdvs, settleMent);
+            return AccessFunction<InHospitalYuSettleMent>("2303", this.insuplc_admdvs, settleMent);
         }
         [NewFunctionCode("2402")]
         private int OutHospital(OutHospital outHospital)
         {
-            return AccessFunction<OutHospital>("2402", insuplc_admdvs, outHospital);
+            return AccessFunction<OutHospital>("2402", this.insuplc_admdvs, outHospital);
         }
         [NewFunctionCode("2304")]
         private int SettleMent(InHospitalSettleMent settleMent)
         {
-            return AccessFunction<InHospitalSettleMent>("2304", insuplc_admdvs, settleMent);
+            return AccessFunction<InHospitalSettleMent>("2304", this.insuplc_admdvs, settleMent);
         }
         [NewFunctionCode("2305")]
         private int SettleMentBack(InHospitalSettleMentReturn inHospitalSettleMent)
         {
-            return AccessFunction<InHospitalSettleMentReturn>("2305", insuplc_admdvs, inHospitalSettleMent);
+            return AccessFunction<InHospitalSettleMentReturn>("2305", this.insuplc_admdvs, inHospitalSettleMent);
         }
         [NewFunctionCode("2405")]
         private int OutHospitalBack(OutHospitalReturn outHospitalReturn)
         {
-            return AccessFunction<OutHospitalReturn>("2405", insuplc_admdvs, outHospitalReturn);
+            return AccessFunction<OutHospitalReturn>("2405", this.insuplc_admdvs, outHospitalReturn);
         }
         #endregion
 
@@ -249,60 +256,60 @@ namespace NeuSoftMedicare.SQLServer.Hospital
         [NewFunctionCode("2201")]
         private int ClinicRegist(ClinicRegist regist)
         {
-            return AccessFunction<ClinicRegist>("2201", insuplc_admdvs, regist);
+            return AccessFunction<ClinicRegist>("2201", this.insuplc_admdvs, regist);
         }
         [NewFunctionCode("2202")]
         private int ClinicRegistBack(ClinicRegistReturn registReturn)
         {
-            return AccessFunction<ClinicRegistReturn>("2202", insuplc_admdvs, registReturn);
+            return AccessFunction<ClinicRegistReturn>("2202", this.insuplc_admdvs, registReturn);
         }
 
         [NewFunctionCode("2203")]
         private int ClinicInfomationUpload(ClinicInformationUpload upload)
         {
-            return AccessFunction<ClinicInformationUpload>("2203", insuplc_admdvs, upload); 
+            return AccessFunction<ClinicInformationUpload>("2203", this.insuplc_admdvs, upload); 
         }
 
         [NewFunctionCode("2203A")]
         private int ClinicInfomationUploadTwo(ClinicInformationUpload upload)
         {
-            return AccessFunction<ClinicInformationUpload>("2203A", insuplc_admdvs, upload);
+            return AccessFunction<ClinicInformationUpload>("2203A", this.insuplc_admdvs, upload);
         }
         [NewFunctionCode("2204")]
         private int ClinicChargeUpload(ClinicChargeUpload upload)
         {
-            string input=json.UploadOutpatientFeeDetailJson("2204", insuplc_admdvs, new List<ClinicChargeUpload>() { upload });
+            string input=json.UploadOutpatientFeeDetailJson("2204", this.insuplc_admdvs, new List<ClinicChargeUpload>() { upload });
             return AccessFunction("2204",input);
         }
         [NewFunctionCode("2205")]
         private int ClinicChargeBack(ClinicChargeReturn clinicCharge)
         {
-            return AccessFunction<ClinicChargeReturn>("2205", insuplc_admdvs, clinicCharge);
+            return AccessFunction<ClinicChargeReturn>("2205", this.insuplc_admdvs, clinicCharge);
         }
         [NewFunctionCode("2206")]
         private int ClinicYuSettleMent(ClicinYuSettleMent clicinYuSettleMent)
         {
-            return AccessFunction<ClicinYuSettleMent>("2206", insuplc_admdvs, clicinYuSettleMent);
+            return AccessFunction<ClicinYuSettleMent>("2206", this.insuplc_admdvs, clicinYuSettleMent);
         }
         [NewFunctionCode("2206A")]
         private int ClinicYuSettleMentTwo(ClicinYuSettleMent clicinYuSettleMent)
         {
-            return AccessFunction<ClicinYuSettleMent>("2206A", insuplc_admdvs, clicinYuSettleMent);
+            return AccessFunction<ClicinYuSettleMent>("2206A", this.insuplc_admdvs, clicinYuSettleMent);
         }
         [NewFunctionCode("2207")]
         private int ClinicSettleMent(ClinicSettleMent clinicSettle)
         {
-            return AccessFunction<ClinicSettleMent>("2207", insuplc_admdvs, clinicSettle);
+            return AccessFunction<ClinicSettleMent>("2207", this.insuplc_admdvs, clinicSettle);
         }
         [NewFunctionCode("2207A")]
         private int ClinicSettleMentTwo(ClinicSettleMent clinicSettle)
         {
-            return AccessFunction<ClinicSettleMent>("2207A", insuplc_admdvs, clinicSettle);
+            return AccessFunction<ClinicSettleMent>("2207A", this.insuplc_admdvs, clinicSettle);
         }
         [NewFunctionCode("2208")]
         private int ClinicSettleMentBack(ClinicSettleMentReturn clinicSettle)
         {
-            return AccessFunction<ClinicSettleMentReturn>("2208", insuplc_admdvs, clinicSettle);
+            return AccessFunction<ClinicSettleMentReturn>("2208", this.insuplc_admdvs, clinicSettle);
         }
         #endregion
         private int AccessFunction<T>(string api, string insuplc_admdvs, T hospital) where T : HospitalBase
